@@ -1,0 +1,54 @@
+
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
+</head>
+
+{% if messages %}
+{% for message in messages %}
+<p style='background: black; color: white; padding: 2em; max-width: 30%; text-align: center;' >{{message|safe}} <br></p>
+
+{% endfor %}
+{% endif %}
+
+    <nav class="navbar navbar-dark bg-danger" >
+        <h3 style='padding-left: 0.5em;'>  Newsletter Emailer  </h3>
+    <ul style='padding: 1em; color: black; list-style-type: none; display: grid; grid-template-columns: 3fr 3fr  3fr ; grid-gap: 1em;  '>
+
+        <li><a href="{% url 'index' %}">Home</a></li> 
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li> 
+    </ul>
+</nav>
+    <div class='row'>
+        <div class='col-sm-4'>
+{% if latest_question_list %}
+ <ul>
+      {% for question in latest_question_list %}
+      <li><a href="{% url 'index'  %}">{{ question.username }}</a></li> 
+      {% endfor %} </ul>
+      
+       
+      {% else %}
+      
+      <p>No Newsletters are available.</p>
+       {% endif %}
+ </div>
+ <div class='col-sm-8'>
+    {% if latest_question_list %}
+    <ul>
+         {% for question in latest_question_list %}
+         <li><a href="{% url 'index' %}">{{ question.username }}</a></li> 
+         {% endfor %} </ul>
+         
+         
+         {% else %}
+         
+         <p>No polls are available.</p>
+          {% endif %}
+    </div>
+ </div>
+</div>
+       <script src="{% static 'js/bootstrap.min.js' %}"></script>
+

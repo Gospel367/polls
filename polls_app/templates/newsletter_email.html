@@ -1,0 +1,10 @@
+{% autoescape off %}
+Hi {{user.username}},
+
+Here is our newest post on your favourite website: {{don}}  by {{author}}
+
+{{post}} 
+
+For more, visit our latest posts on http://{{domain}}{% url 'login'  %}
+
+{% endautoescape %}
